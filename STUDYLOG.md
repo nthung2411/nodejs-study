@@ -133,3 +133,12 @@ output:
 - `mkdir lion-lib` create a folder
 - `cd lion-lib`
 - `npm init --yes`
+- if you don't have account on npmjs, use `npm adduser`
+- else use `npm login`
+- to publish the package, use `npm publish`, make sure your lib name is unique.
+
+# Updating a publised package
+- add index.js
+- `npm publish` see forbidden error
+- `npm version major` | `npm version minor` | `npm version patch`, to update version
+- try publish again, boom!

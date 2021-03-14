@@ -29,3 +29,80 @@ const emitter = new EventEmitter();
 ```javascript
 class Logger extends EventEmitter { }
 ```
+# Http module
+- use http module to create Server on port 3000
+```javascript
+const http= require('http');
+const server = http.createServer();
+server.listen(3000);
+```
+- extend for specific API endpoints
+```javascript
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.write('Hello World');
+        res.end();
+    }
+
+    if (req.url === '/api/courses') {
+        res.write(JSON.stringify([1, 2, 3, 4]));
+        res.end();
+    }
+});
+server.listen(3000);
+```
+NOTE: this is basic usage on how to create APIs using nodejs, 
+but it is not recommended since the more endpoints written, the more complicated your code will be.
+Using `Express` will give more structure sense to maintain.
+
+# Node Package Manager, aka npm
+- `npm i -g npm` install the latest npm globally.
+# Package.json
+- `npm init` add package.json
+- walkthrough all the questions
+# Installing a Node package
+- `npm i underscore`
+- `underscore` will appear inside `dependencies`
+- understand what inside `node_modules`
+- `npm i underscore --save` is the same `npm i underscore`
+- using the installed package
+```javascript
+var _ = require('underscore'); // getting underscore package
+var _ = require('./underscore'); // getting file underscore.js or underscore/index.js
+```
+# Package dependencies
+- `npm i mongoose`
+- in package.json
+```javascript
+"dependencies": {
+    "mongoose": "^5.11.19",
+    "underscore": "^1.12.0"
+}
+```
+- in `node_modules`, alot of files, which are required dependencies of `mongoose`
+- in term of dependency conflict, then the required dependencies that are under conflict will be stored locally inside the installed package.
+e.g. Application required `underscore` version 1.0 but `mongoose` requires `underscore` version 2.0,
+in order to solve this conflict, `underscore` version 2.0, will be installed locally inside the `mongoose` package.
+
+# NPM packages and Source control
+- for each dependencies store inside `package.json`, so `node_modules` should not be included
+- just run `npm i` then every dependencies will be installed accordingly.
+
+# Semantic versioning, aka SemVer
+- `x.y.z` format is stand for Major.Minor.Patch
+- Patch is for bugfixes, the more bugfixes are released, the higher number will be.
+- Minor is for features.
+- Major is Breaking Change features.
+- `^` keep the minor version up to date.
+- `~` keep the app update to latest.
+- safe recommendation is to keep its version fixed.
+
+# Listing the Installed Packages
+- by manually, you can check installed version by going to `node_modules/{package-to-check}/package.json`, look for its version.
+- But checking it manually is tedious, so use `npm ls` instead.
+- For reducing depth level, specify the level you want to check `npm ls --depth={number}`
+e.g `npm ls --depth=0`
+output:
++-- mongoose@5.11.19
+`-- underscore@1.12.0
+- 

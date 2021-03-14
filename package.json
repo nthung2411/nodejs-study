@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-study",
+  "version": "1.0.0",
+  "description": "Application Programming Interface",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nthung2411/nodejs-study.git"
+  },
+  "author": "Robert Hung Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nthung2411/nodejs-study/issues"
+  },
+  "homepage": "https://github.com/nthung2411/nodejs-study#readme",
+  "dependencies": {
+    "mongoose": "^5.11.19",
+    "underscore": "^1.12.0"
+  }
+}

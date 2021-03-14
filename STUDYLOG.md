@@ -105,4 +105,31 @@ e.g `npm ls --depth=0`
 output:
 +-- mongoose@5.11.19
 `-- underscore@1.12.0
-- 
+# View Registry Info For a Package
+- `npm view mongoose` => open `package.json` of mongoose library.
+- `npm view mongoose dependencies` => view only dependencies of mongoose library.
+
+# Installing a Specific version of a Package
+- `npm install underscore@1.4.0`
+
+# update local Packages
+- `npm outdated`
+- `npm i -g npm-check-updates`
+- `ncu` to view all outdated libraries.
+- `ncu -u`
+
+# Dev Dependencies
+- `npm i jshint --save-dev`
+- it wont build in production mode
+
+# Uninstalling a package
+- `npm un mongoose` or `npm uninstall mongoose`
+
+# Working with Global Packages
+- `npm i -g npm`
+- `npm -g outdated` to check outdated global package
+
+# Publish a package to NPM registers
+- `mkdir lion-lib` create a folder
+- `cd lion-lib`
+- `npm init --yes`

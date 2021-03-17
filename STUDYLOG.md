@@ -142,3 +142,59 @@ output:
 - `npm publish` see forbidden error
 - `npm version major` | `npm version minor` | `npm version patch`, to update version
 - try publish again, boom!
+
+================================================================
+# Build RESTful API's using Express
+## What is REST
+- REST or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, 
+- making it easier for systems to communicate with each other. 
+- REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server.
+- reference: https://www.codecademy.com/articles/what-is-rest
+
+# Introducing Express
+- view through `express` library
+- create `express-demo`
+- `npm init --yes`
+- `npm i express`
+
+# Building first web server
+- add index.js
+- use `express`
+```javascript
+const express = require('express');
+const app = express();
+app.get('/', (req, res) =>{
+    res.send('Hello World');
+});
+```
+- reference: http://expressjs.com/en/4x/api.html#req
+
+# Nodemon
+- node monitor
+- `npm i -g nodemon`
+- `nodemon index.js`
+- nodemon help restart server automatically due to changes.
+
+# Enviroment Variables
+- in global object `process`, we will access PORT.
+```javascript
+process.env.PORT
+```
+- PORT enviroment can be set outside application, `export PORT=5000`
+- start server
+- observe changes, the listening port will be updated correspondingly.
+
+# Route parameters
+- how to create a route
+- how to get path params and query params
+```javascript
+const params = req.params;
+const query = req.query;
+const allParams = { ...params, ...query };
+```
+- `http://localhost:3000/api/courses/2020/8?sortBy=name&order=asc` => `{"year":"2020","month":"8","sortBy":"name","order":"asc"}`
+
+# Handling HTTP GET requests
+
+# Handling HTTP POST requests
+- to handle json requests, add `app.use(express.json())`

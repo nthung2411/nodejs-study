@@ -196,5 +196,28 @@ const allParams = { ...params, ...query };
 
 # Handling HTTP GET requests
 
-# Handling HTTP POST requests
+# Handling HTTP POST requests, #Calling Endpoints Using Postman
 - to handle json requests, add `app.use(express.json())`
+- lesson learnt
+- always make sure to have `res.send()` at the end of any APIs, or else client request cannot be completed.
+- side note, aside POSTMAN, we can use `curl` in order to make requests to server.
+## CURL
+- GET `curl http://localhost:3000/api/courses`
+- POST `curl --header "Content-Type: application/json" --request POST --data "{\"name\":\"Hello, I am Robert.\"}" http://localhost:3000/api/courses`
+
+# Input Validation
+- return 400 if name is null or less than 3
+- try applying `joi`
+```javascript
+const schema = Joi.object({
+    name: Joi.string().min(3).max(30).required()
+});
+const requestData = {};
+const result = schema.validate(requestData);
+if(result.error){
+    console.log(result.error)
+}
+```
+
+# Handling HTTP PUT requests
+- add PUT api

@@ -263,3 +263,5 @@ express.json()
 ```
 - whenever a request object contains a json object in the body of the request,
 it will parse the request object into json object and return it inside `req.body`
+
+## Creating custom middleware

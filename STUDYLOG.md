@@ -1,4 +1,5 @@
-# 02/03/2021
+# Getting Started 02/03/2021
+## What is Node
 - There is no `window` object in Node
 - There is `global` object in Node, which is global.
 - Unlike browser application, defined variables are not added to `global` object.
@@ -29,7 +30,7 @@ const emitter = new EventEmitter();
 ```javascript
 class Logger extends EventEmitter { }
 ```
-# Http module
+## Http module
 - use http module to create Server on port 3000
 ```javascript
 const http= require('http');
@@ -55,12 +56,12 @@ NOTE: this is basic usage on how to create APIs using nodejs,
 but it is not recommended since the more endpoints written, the more complicated your code will be.
 Using `Express` will give more structure sense to maintain.
 
-# Node Package Manager, aka npm
+## Node Package Manager, aka npm
 - `npm i -g npm` install the latest npm globally.
-# Package.json
+## Package.json
 - `npm init` add package.json
 - walkthrough all the questions
-# Installing a Node package
+## Installing a Node package
 - `npm i underscore`
 - `underscore` will appear inside `dependencies`
 - understand what inside `node_modules`
@@ -70,7 +71,7 @@ Using `Express` will give more structure sense to maintain.
 var _ = require('underscore'); // getting underscore package
 var _ = require('./underscore'); // getting file underscore.js or underscore/index.js
 ```
-# Package dependencies
+## Package dependencies
 - `npm i mongoose`
 - in package.json
 ```javascript
@@ -84,11 +85,11 @@ var _ = require('./underscore'); // getting file underscore.js or underscore/ind
 e.g. Application required `underscore` version 1.0 but `mongoose` requires `underscore` version 2.0,
 in order to solve this conflict, `underscore` version 2.0, will be installed locally inside the `mongoose` package.
 
-# NPM packages and Source control
+## NPM packages and Source control
 - for each dependencies store inside `package.json`, so `node_modules` should not be included
 - just run `npm i` then every dependencies will be installed accordingly.
 
-# Semantic versioning, aka SemVer
+## Semantic versioning, aka SemVer
 - `x.y.z` format is stand for Major.Minor.Patch
 - Patch is for bugfixes, the more bugfixes are released, the higher number will be.
 - Minor is for features.
@@ -97,7 +98,7 @@ in order to solve this conflict, `underscore` version 2.0, will be installed loc
 - `~` keep the app update to latest.
 - safe recommendation is to keep its version fixed.
 
-# Listing the Installed Packages
+## Listing the Installed Packages
 - by manually, you can check installed version by going to `node_modules/{package-to-check}/package.json`, look for its version.
 - But checking it manually is tedious, so use `npm ls` instead.
 - For reducing depth level, specify the level you want to check `npm ls --depth={number}`
@@ -105,31 +106,31 @@ e.g `npm ls --depth=0`
 output:
 +-- mongoose@5.11.19
 `-- underscore@1.12.0
-# View Registry Info For a Package
+## View Registry Info For a Package
 - `npm view mongoose` => open `package.json` of mongoose library.
 - `npm view mongoose dependencies` => view only dependencies of mongoose library.
 
-# Installing a Specific version of a Package
+## Installing a Specific version of a Package
 - `npm install underscore@1.4.0`
 
-# update local Packages
+## update local Packages
 - `npm outdated`
 - `npm i -g npm-check-updates`
 - `ncu` to view all outdated libraries.
 - `ncu -u`
 
-# Dev Dependencies
+## Dev Dependencies
 - `npm i jshint --save-dev`
 - it wont build in production mode
 
-# Uninstalling a package
+## Uninstalling a package
 - `npm un mongoose` or `npm uninstall mongoose`
 
-# Working with Global Packages
+## Working with Global Packages
 - `npm i -g npm`
 - `npm -g outdated` to check outdated global package
 
-# Publish a package to NPM registers
+## Publish a package to NPM registers
 - `mkdir lion-lib` create a folder
 - `cd lion-lib`
 - `npm init --yes`
@@ -137,7 +138,7 @@ output:
 - else use `npm login`
 - to publish the package, use `npm publish`, make sure your lib name is unique.
 
-# Updating a publised package
+## Updating a publised package
 - add index.js
 - `npm publish` see forbidden error
 - `npm version major` | `npm version minor` | `npm version patch`, to update version
@@ -151,13 +152,13 @@ output:
 - REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server.
 - reference: https://www.codecademy.com/articles/what-is-rest
 
-# Introducing Express
+## Introducing Express
 - view through `express` library
 - create `express-demo`
 - `npm init --yes`
 - `npm i express`
 
-# Building first web server
+## Building first web server
 - add index.js
 - use `express`
 ```javascript
@@ -169,13 +170,13 @@ app.get('/', (req, res) =>{
 ```
 - reference: http://expressjs.com/en/4x/api.html#req
 
-# Nodemon
+## Nodemon
 - node monitor
 - `npm i -g nodemon`
 - `nodemon index.js`
 - nodemon help restart server automatically due to changes.
 
-# Enviroment Variables
+## Enviroment Variables
 - in global object `process`, we will access PORT.
 ```javascript
 process.env.PORT
@@ -184,7 +185,7 @@ process.env.PORT
 - start server
 - observe changes, the listening port will be updated correspondingly.
 
-# Route parameters
+## Route parameters
 - how to create a route
 - how to get path params and query params
 ```javascript
@@ -194,18 +195,18 @@ const allParams = { ...params, ...query };
 ```
 - `http://localhost:3000/api/courses/2020/8?sortBy=name&order=asc` => `{"year":"2020","month":"8","sortBy":"name","order":"asc"}`
 
-# Handling HTTP GET requests
+## Handling HTTP GET requests
 
-# Handling HTTP POST requests, #Calling Endpoints Using Postman
+## Handling HTTP POST requests, #Calling Endpoints Using Postman
 - to handle json requests, add `app.use(express.json())`
 - lesson learnt
 - always make sure to have `res.send()` at the end of any APIs, or else client request cannot be completed.
 - side note, aside POSTMAN, we can use `curl` in order to make requests to server.
-## CURL
+### CURL
 - GET `curl http://localhost:3000/api/courses`
 - POST `curl --header "Content-Type: application/json" --request POST --data "{\"name\":\"Hello, I am Robert.\"}" http://localhost:3000/api/courses`
 
-# Input Validation
+## Input Validation
 - return 400 if name is null or less than 3
 - try applying `joi`
 ```javascript
@@ -219,15 +220,20 @@ if(result.error){
 }
 ```
 
-# Handling HTTP PUT requests
+## Handling HTTP PUT requests
 - add PUT api
 - handle 404
 - handle 400
 - update corresponding data
 - return updated course
 
-# Handling HTTP DELETE requests
+## Handling HTTP DELETE requests
 - add DELETE api
 - handle 404
 - delete corresponding id
 - return deleted course
+
+================================================================
+# Express- Advanced Topics
+## Introduction
+## Middleware

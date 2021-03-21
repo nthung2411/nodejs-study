@@ -236,4 +236,30 @@ if(result.error){
 ================================================================
 # Express- Advanced Topics
 ## Introduction
+- Middleware
+- Configuration
+- Debugging
+- Templating Engines
 ## Middleware
+- middleware functions take request object, and either return a response to the client or passes control to another middleware function.
+- every route handler function is a middleware function
+#### Example: 
+- in block code below
+```javascript
+app.get('/', (req, res) =>{
+    res.send('hello world');
+});
+```
+- this block code
+```javascript
+(req, res) => {
+    ...
+}
+```
+is a middleware function.
+- another form of middleware function
+```javascript
+express.json()
+```
+- whenever a request object contains a json object in the body of the request,
+it will parse the request object into json object and return it inside `req.body`

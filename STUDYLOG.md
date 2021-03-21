@@ -221,3 +221,13 @@ if(result.error){
 
 # Handling HTTP PUT requests
 - add PUT api
+- handle 404
+- handle 400
+- update corresponding data
+- return updated course
+
+# Handling HTTP DELETE requests
+- add DELETE api
+- handle 404
+- delete corresponding id
+- return deleted course

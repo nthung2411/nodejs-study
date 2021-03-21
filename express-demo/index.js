@@ -69,6 +69,16 @@ app.put('/api/courses/:id', (req, res) => {
     res.send(course);
 });
 
+app.delete('/api/courses/:id', (req, res) => {
+    const index = courses.findIndex(course => course.id === parseInt(req.params.id));
+    if (index === -1) {// 404
+        res.status(404).send('The course does not exist');
+    }
+    const course = courses[index];
+    courses.splice(index, 1);
+    res.send(course);
+});
+
 app.get('/api/courses/:year/:month', (req, res) => {
     const params = req.params;
     const query = req.query;

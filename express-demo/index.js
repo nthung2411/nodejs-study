@@ -18,7 +18,7 @@ app.get('/api/courses', (req, res) => {
 app.get('/api/courses/:id', (req, res) => {
     const course = courses.find(course => course.id === parseInt(req.params.id));
     if (!course) {// 404
-        res.status(404).send('The course does not exist');
+        return res.status(404).send('The course does not exist');
     }
     res.send(course);
 });
@@ -30,8 +30,7 @@ app.post('/api/courses', (req, res) => {
     const result = schema.validate(req.body);
     if (result.error) {
         // 400 bad request
-        res.status(400).send(result.error.details[0].message);
-        return;
+        return res.status(400).send(result.error.details[0].message);
     }
 
     const course = {
@@ -47,7 +46,7 @@ app.put('/api/courses/:id', (req, res) => {
     // if not existing, return 404
     const course = courses.find(course => course.id === parseInt(req.params.id));
     if (!course) {// 404
-        res.status(404).send('The course does not exist');
+        return res.status(404).send('The course does not exist');
     }
 
     // validate
@@ -59,8 +58,7 @@ app.put('/api/courses/:id', (req, res) => {
     const result = schema.validate(req.body);
     if (result.error) {
         // 400 bad request
-        res.status(400).send(result.error.details[0].message);
-        return;
+        return res.status(400).send(result.error.details[0].message);
     }
 
     // update course
@@ -72,7 +70,7 @@ app.put('/api/courses/:id', (req, res) => {
 app.delete('/api/courses/:id', (req, res) => {
     const index = courses.findIndex(course => course.id === parseInt(req.params.id));
     if (index === -1) {// 404
-        res.status(404).send('The course does not exist');
+        return res.status(404).send('The course does not exist');
     }
     const course = courses[index];
     courses.splice(index, 1);

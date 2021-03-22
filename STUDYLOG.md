@@ -265,3 +265,20 @@ express.json()
 it will parse the request object into json object and return it inside `req.body`
 
 ## Creating custom middleware
+- creating custom middleware by `app.use((req, res, next) => {})`
+- any custom middleware are recommended to be separated in corresponding modules.
+
+## built-in middleware
+- `express.json()`, parse request into a JSON object in the `req.body`
+- `express.urlencoded()`, to parse form urlencoded into key/value pairs in `req.body`
+NOTE: `express.urlencoded({ extended: true })` will be capable of parsing arrays data.
+- `express.static('public')`, this will publish all the resources/file inside `public` folder to public.
+e.g: publish file `readme.txt` inside `public` folder, accessible via `http://localhost:3000/readme.txt`
+
+## Third party middleware
+- `expressjs.com`, look up `middle`
+- `helmet` is recommended, to secure HTTPS
+- `morgan` for logger
+
+## Environments
+- 

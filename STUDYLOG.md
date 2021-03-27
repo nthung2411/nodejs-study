@@ -281,4 +281,27 @@ e.g: publish file `readme.txt` inside `public` folder, accessible via `http://lo
 - `morgan` for logger
 
 ## Environments
-- 
+- to access env, use `app.get('env')`
+
+## Configuration
+- npm `config` package
+- introduce `config` folder
+- add `development.json`
+- add `production.json`
+- in term of security, it is not safe to directly store password in source file,
+- introduce `custom-environment-variables.json`
+- introduce global variables
+in MAC
+- `export app_password=1234`
+in Windows
+- `SET app_password=1234`
+in `custom-environment-variables.json`
+```javascript
+"mail":{
+    "password": "app_password"
+}
+```
+
+## Debugging
+- using config to disable and enable `console.log`
+- `set DEBUG=app:startup`

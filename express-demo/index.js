@@ -1,3 +1,6 @@
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
+const config = require('config');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const Joi = require('joi');
@@ -11,7 +14,18 @@ app.use(logger);
 app.use(auth);
 app.use(express.static('public'));
 app.use(helmet());
-app.use(morgan('tiny'));
+
+// configuration
+console.log(`Application Name: ${config.get('name')}`);
+console.log(`Mail Server Name: ${config.get('mail.host')}`);
+console.log(`Mail Server Name: ${config.get('mail.password')}`);
+
+if (app.get('env') === 'development') {
+    app.use(morgan('tiny'));
+    startupDebugger('Morgan enabled...')
+}
+
+dbDebugger('Connected to database enabled...');
 
 const courses = [
     { id: 1, name: 'Course A' },

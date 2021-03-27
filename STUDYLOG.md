@@ -305,3 +305,15 @@ in `custom-environment-variables.json`
 ## Debugging
 - using config to disable and enable `console.log`
 - `set DEBUG=app:startup`
+- observe
+- `set DEBUG=`
+- observe
+- `set DEBUG=app:db`
+
+## Templating engines
+- There are 3 templating Engines
+-- Pug
+-- Mustache
+-- EJS
+- in this practice, we choose `pug`
+- create `views` folder, add `index.pug`

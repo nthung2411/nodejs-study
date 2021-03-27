@@ -9,6 +9,9 @@ const logger = require('./logger');
 const auth = require('./auth');
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', './views'); // default
+
 app.use(express.json())
 app.use(logger);
 app.use(auth);
@@ -19,10 +22,9 @@ app.use(helmet());
 console.log(`Application Name: ${config.get('name')}`);
 console.log(`Mail Server Name: ${config.get('mail.host')}`);
 console.log(`Mail Server Name: ${config.get('mail.password')}`);
-
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
-    startupDebugger('Morgan enabled...')
+    startupDebugger('Morgan enabled...');
 }
 
 dbDebugger('Connected to database enabled...');
@@ -33,7 +35,10 @@ const courses = [
 ]
 
 app.get('/', (req, res) => {
-    res.send('Hello World!!!');
+    res.render('index', {
+        title: 'My Express Application',
+        message: 'Hello World!!!'
+    });
 });
 app.get('/api/courses', (req, res) => {
     res.send(courses);

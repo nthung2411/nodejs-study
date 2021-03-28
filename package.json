@@ -16,8 +16,7 @@
     "url": "https://github.com/nthung2411/nodejs-study/issues"
   },
   "homepage": "https://github.com/nthung2411/nodejs-study#readme",
-  "dependencies": {
-    "joi": "^17.4.0",
+  "dependencies": {    
     "mongoose": "^5.12.0",
     "underscore": "^1.12.0"
   },
